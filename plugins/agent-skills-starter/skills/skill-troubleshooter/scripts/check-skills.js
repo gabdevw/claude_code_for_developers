@@ -7,7 +7,8 @@
 //   (default: .claude/skills in the current folder and ~/.claude/skills)
 //
 // Errors (exit 1): SKILL.md outside a named folder, wrong file name case, frontmatter that
-//   can't be read, `name` different from the folder, links to files that don't exist.
+//   can't be read, `name` different from the folder, links to files that don't exist,
+//   {{TODO: ...}} markers left by a template.
 // Warnings: missing or weak description, open-standard limits (name format, 1024-char
 //   description), more than 500 lines, scripts without execute permission, backslashes
 //   in paths, the same skill name in several folders.
@@ -77,6 +78,11 @@ function checkSkill(skillDir, file) {
     if (!/(^|[^\wá-ú])(use|úsala|úsalo|usar)\b/i.test(description)) {
       warnings.push(`${where}: the description says what the skill does but not WHEN to use it. Add "Use when ...".`);
     }
+  }
+
+  // Markers inside `code` are explanations, not leftovers. / Los marcadores dentro de `código` son explicaciones.
+  if (text.replace(/```[\s\S]*?```/g, '').replace(/`[^`\n]*`/g, '').includes('{{TODO')) {
+    errors.push(`${where}: unfinished skill: replace every {{TODO: ...}} marker.`);
   }
 
   const lineCount = text.split('\n').length;

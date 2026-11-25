@@ -5,6 +5,8 @@ All notable changes to this repository. / Todos los cambios importantes de este 
 ## [Unreleased] / [Sin publicar]
 
 ### Added / Agregado
+- **EN:** Skill `create-skill`: decides first whether a request is a skill, hook, subagent, CLAUDE.md rule or MCP server, then builds and validates it.
+  **ES:** Skill `create-skill`: primero decide si un pedido es una skill, un hook, un subagente, una regla de CLAUDE.md o un servidor MCP, y luego lo construye y lo valida.
 - **EN:** Course *Introduction to Agent Skills*: 6 chapters (what skills are, creating a skill, configuration and multi-file skills, skills vs. other features, sharing, troubleshooting).
   **ES:** Curso *Introducción a las Agent Skills*: 6 capítulos (qué son las skills, crear una skill, configuración y skills multiarchivo, skills frente a otras funciones, compartir, solución de problemas).
 - **EN:** Plugin `agent-skills-starter` (pr-description, codebase-onboarding, skill-troubleshooter) and a marketplace in `.claude-plugin/marketplace.json`.

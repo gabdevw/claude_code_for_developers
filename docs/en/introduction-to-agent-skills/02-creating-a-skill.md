@@ -78,6 +78,7 @@ To avoid conflicts, **use descriptive names**. Instead of `review`, use `fronten
 
 ## In this repository
 
+- [create-skill](../../../.claude/skills/create-skill/SKILL.md): ask "create a skill for…" and Claude first decides whether it should really be a skill, a hook, a subagent or a CLAUDE.md rule, then builds it with this structure and validates it. Copy its folder to `~/.claude/skills/` to use it in all your projects.
 - [pr-description](../../../plugins/agent-skills-starter/skills/pr-description/SKILL.md): the course example, improved with `allowed-tools` for the git commands.
 - How to copy it as a personal skill: [plugin README → Use a skill as a personal skill](../../../plugins/agent-skills-starter/README.md#use-a-skill-as-a-personal-skill-instead).
 - Copy-ready template: [templates/en/SKILL.md](../../../templates/en/SKILL.md).

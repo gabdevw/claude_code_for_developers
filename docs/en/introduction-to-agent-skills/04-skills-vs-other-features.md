@@ -62,6 +62,8 @@ Hooks are triggered **by events**: they fire when a file is saved or a tool is c
 | "Do this in a separate context and give me the result." | A subagent |
 | "Claude needs access to system Z." | An MCP server |
 
+This guide is built into the [create-skill](../../../.claude/skills/create-skill/SKILL.md) skill: before creating anything, it applies these questions ([decision guide](../../../.claude/skills/create-skill/references/decision-guide.md)) and tells you which feature fits.
+
 ## Summary
 
 - [ ] `CLAUDE.md`: always-on standards. Skills: task knowledge, loaded on demand.

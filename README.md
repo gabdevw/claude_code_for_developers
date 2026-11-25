@@ -40,7 +40,8 @@ All courses: [docs/en/](docs/en/README.md).
 │   │   └── lib/                      # Shared code (secret patterns, input reader)
 │   └── skills/
 │       ├── verify/               # /verify — SKILL.md + reference.md + scripts/check.sh
-│       └── add-course/           # Adds a course: SKILL.md + references/ + scripts/ + assets/
+│       ├── add-course/           # Adds a course: SKILL.md + references/ + scripts/ + assets/
+│       └── create-skill/         # Decides skill vs hook vs subagent vs CLAUDE.md, then builds it
 ├── plugins/
 │   └── agent-skills-starter/     # Plugin with reusable skills + publishing steps
 ├── .github/

@@ -62,6 +62,8 @@ Los **servidores MCP** le dan a Claude nuevas herramientas e integraciones, por 
 | "Haz esto en un contexto aparte y dame el resultado." | Un subagente |
 | "Claude necesita acceso al sistema Z." | Un servidor MCP |
 
+Esta guía está incorporada en la skill [create-skill](../../../.claude/skills/create-skill/SKILL.md): antes de crear nada, aplica estas preguntas ([guía de decisión](../../../.claude/skills/create-skill/references/decision-guide.md)) y te dice qué función corresponde.
+
 ## Resumen
 
 - [ ] `CLAUDE.md`: estándares siempre activos. Skills: conocimiento de tareas, cargado bajo demanda.

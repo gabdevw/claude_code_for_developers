@@ -78,6 +78,7 @@ Para evitar conflictos, **usa nombres descriptivos**. En lugar de `review`, usa 
 
 ## En este repositorio
 
+- [create-skill](../../../.claude/skills/create-skill/SKILL.md): pide "crea una skill para…" y Claude primero decide si realmente debe ser una skill, un hook, un subagente o una regla de CLAUDE.md, y luego la construye con esta estructura y la valida. Copia su carpeta a `~/.claude/skills/` para usarla en todos tus proyectos.
 - [pr-description](../../../plugins/agent-skills-starter/skills/pr-description/SKILL.md): el ejemplo del curso, mejorado con `allowed-tools` para los comandos de git.
 - Cómo copiarla como skill personal: [README del plugin → Usar una skill como skill personal](../../../plugins/agent-skills-starter/README.es.md#usar-una-skill-como-skill-personal).
 - Plantilla lista para copiar: [templates/es/SKILL.md](../../../templates/es/SKILL.md).
