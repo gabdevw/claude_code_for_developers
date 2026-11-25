@@ -4,9 +4,14 @@ No ejecutes /compact solo, sin más. Agrega instrucciones después del comando p
 
 /compact Enfócate en la implementación de la bandera --version
 
-Ejecuta trabajo en paralelo con worktrees; Hay un archivo útil que debes conocer. Un archivo .worktreeinclude en la raíz del repositorio enumera los archivos ignorados por git que se deben copiar a cada worktree. Esto es útil para cosas como un archivo de variables de entorno o una configuración local que necesitas en cada worktree pero que no quieres confirmar en el control de versiones.
+Ejecuta trabajo en paralelo con worktrees
 
-Loop; Loop ejecuta un prompt en un intervalo entre turnos, ya sea fijo o a su propio ritmo. Úsalo para sondear algo externo, como una ejecución de CI o un despliegue, y actuar cuando el estado cambie.
+La metáfora de dirección hasta ahora asume un volante en un auto. Pero cuando estás ejecutando varios agentes en la misma base de código, no quieres dos volantes en un auto. Eso es inseguro. Dos sesiones de Claude peleando por los mismos archivos lleva a conflictos.
+Ahí es donde entran los worktrees. En lugar de que las sesiones se pisen entre sí, cada una obtiene su propio árbol de archivos independiente.
+Debido a que cada agente tiene su propio árbol, no pueden sobrescribir los cambios del otro. Cuando una sesión termina, un worktree limpio se elimina automáticamente.
+Hay un archivo útil que debes conocer. Un archivo .worktreeinclude en la raíz del repositorio enumera los archivos ignorados por git que se deben copiar a cada worktree. Esto es útil para cosas como un archivo de variables de entorno o una configuración local que necesitas en cada worktree pero que no quieres confirmar en el control de versiones.
+
+Loop: Loop ejecuta un prompt en un intervalo entre turnos, ya sea fijo o a su propio ritmo. Úsalo para sondear algo externo, como una ejecución de CI o un despliegue, y actuar cuando el estado cambie.
 
 Resumen: 
 
