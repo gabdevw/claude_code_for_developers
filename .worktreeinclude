@@ -1,0 +1,10 @@
+# Gitignored files to copy into every new worktree (`claude --worktree <name>`).
+# Same syntax as .gitignore. Only files that match AND are gitignored are copied.
+#
+# Archivos ignorados por git que se copian a cada worktree nuevo (`claude --worktree <nombre>`).
+# Misma sintaxis que .gitignore. Solo se copian los que coinciden Y están ignorados por git.
+
+.env
+.env.local
+CLAUDE.local.md
+.claude/settings.local.json

@@ -1,0 +1,19 @@
+# Runs the same checks as the /verify skill on every pull request and push to main.
+# Ejecuta las mismas verificaciones que la skill /verify en cada pull request y push a main.
+name: Checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run checks / Ejecutar verificaciones
+        run: bash .claude/skills/verify/scripts/check.sh
