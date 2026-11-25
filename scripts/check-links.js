@@ -2,15 +2,15 @@
 // Checks that relative links in Markdown files point to files that exist.
 // Comprueba que los enlaces relativos en los archivos Markdown apunten a archivos que existen.
 //
-// templates/ is skipped on purpose: its links contain placeholders like <course-slug>.
-// templates/ se omite a propósito: sus enlaces tienen marcadores como <course-slug>.
+// templates/ and assets/ are skipped on purpose: their links contain placeholders like {{slug}}.
+// templates/ y assets/ se omiten a propósito: sus enlaces tienen marcadores como {{slug}}.
 'use strict';
 
 const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
-const SKIP_DIRS = new Set(['.git', 'node_modules', 'templates', 'worktrees', 'state']);
+const SKIP_DIRS = new Set(['.git', 'node_modules', 'templates', 'assets', 'worktrees', 'state']);
 const LINK = /\[[^\]]*\]\(([^)\s]+)(?:\s+"[^"]*")?\)/g;
 
 function markdownFiles(dir) {

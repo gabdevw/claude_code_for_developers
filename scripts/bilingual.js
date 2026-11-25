@@ -6,6 +6,7 @@
 //   docs/en/<path>      <->  docs/es/<path>
 //   templates/en/<path> <->  templates/es/<path>
 //   <NAME>.md           <->  <NAME>.es.md   (only for ROOT_PAIRS / solo para ROOT_PAIRS)
+//   plugins/<p>/README.md <-> plugins/<p>/README.es.md
 //
 // Used by: the /verify skill, the Stop hook, the PostToolUse hook and CI.
 'use strict';
@@ -29,9 +30,15 @@ function listFiles(dir, base = dir) {
 function findMissingTranslations(root) {
   const missing = [];
 
-  for (const name of ROOT_PAIRS) {
-    const en = `${name}.md`;
-    const es = `${name}.es.md`;
+  const pairs = ROOT_PAIRS.map((name) => [`${name}.md`, `${name}.es.md`]);
+  const pluginsDir = path.join(root, 'plugins');
+  if (fs.existsSync(pluginsDir)) {
+    for (const entry of fs.readdirSync(pluginsDir, { withFileTypes: true })) {
+      if (entry.isDirectory()) pairs.push([`plugins/${entry.name}/README.md`, `plugins/${entry.name}/README.es.md`]);
+    }
+  }
+
+  for (const [en, es] of pairs) {
     const hasEn = fs.existsSync(path.join(root, en));
     const hasEs = fs.existsSync(path.join(root, es));
     if (hasEn && !hasEs) missing.push(es);
@@ -53,6 +60,8 @@ function counterpartOf(relPath) {
   const p = relPath.split(path.sep).join('/');
   const match = p.match(/^(docs|templates)\/(en|es)\/(.+)$/);
   if (match) return `${match[1]}/${match[2] === 'en' ? 'es' : 'en'}/${match[3]}`;
+  const plugin = p.match(/^(plugins\/[^/]+\/README)(\.es)?\.md$/);
+  if (plugin) return plugin[2] ? `${plugin[1]}.md` : `${plugin[1]}.es.md`;
   for (const name of ROOT_PAIRS) {
     if (p === `${name}.md`) return `${name}.es.md`;
     if (p === `${name}.es.md`) return `${name}.md`;

@@ -5,6 +5,7 @@ Bilingual (English/Spanish) knowledge base of Claude Code practices, with workin
 ## Structure
 - Course notes go in `docs/en/<course-slug>/` and `docs/es/<course-slug>/`, with the same English file names in both.
 - Copy-ready templates go in `templates/en/` and `templates/es/`.
+- Skills that help maintain this repo go in `.claude/skills/`; reusable skills for other projects go in a plugin under `plugins/`.
 - Shared scripts go in `scripts/`, written in Node.js with no dependencies.
 - Review guidance for Code Review lives in `REVIEW.md`.
 

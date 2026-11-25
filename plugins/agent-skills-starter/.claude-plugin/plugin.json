@@ -1,0 +1,10 @@
+{
+  "name": "agent-skills-starter",
+  "version": "0.1.0",
+  "description": "Starter skills from the Introduction to Agent Skills course: PR descriptions, codebase onboarding and skill troubleshooting.",
+  "author": {
+    "name": "Claude Code Best Practices contributors"
+  },
+  "license": "MIT",
+  "keywords": ["skills", "pull-requests", "onboarding", "troubleshooting"]
+}

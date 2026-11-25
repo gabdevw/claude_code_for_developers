@@ -92,6 +92,8 @@ Examples in this repository:
 - [.claude/skills/add-course/](../../../.claude/skills/add-course/SKILL.md) — adds a new course in both languages (`/add-course <name>`).
 - Template: [templates/en/SKILL.md](../../../templates/en/SKILL.md).
 
+> **Go deeper:** the course [Introduction to Agent Skills](../introduction-to-agent-skills/README.md) covers skills in detail: configuration, subagents, plugins and troubleshooting.
+
 ## Summary
 
 - [ ] A skill is a folder with a `SKILL.md`: a name, a description that triggers it, and the procedure.

@@ -1,0 +1,14 @@
+{
+  "name": "claude-code-best-practices",
+  "description": "Plugins from the Claude Code Best Practices repository.",
+  "owner": {
+    "name": "Claude Code Best Practices contributors"
+  },
+  "plugins": [
+    {
+      "name": "agent-skills-starter",
+      "source": "./plugins/agent-skills-starter",
+      "description": "Starter skills from the Introduction to Agent Skills course: PR descriptions, codebase onboarding and skill troubleshooting."
+    }
+  ]
+}

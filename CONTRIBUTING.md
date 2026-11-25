@@ -25,19 +25,21 @@ The full checklist is in [.claude/skills/verify/reference.md](.claude/skills/ver
 
 ## Add a new course
 
-With Claude Code:
-
-```text
-/add-course <course name>
-```
+With Claude Code, add your notes file to the repository and ask: "add this course to the project" (or run `/add-course <notes file>`). The [add-course skill](.claude/skills/add-course/SKILL.md) does the rest.
 
 By hand:
 
-1. Pick a slug in English, lowercase with hyphens: `my-course-name`.
-2. Copy [templates/en/course-readme.md](templates/en/course-readme.md) to `docs/en/<slug>/README.md` and [templates/es/course-readme.md](templates/es/course-readme.md) to `docs/es/<slug>/README.md`.
-3. Add one page per topic, `01-topic.md`, `02-topic.md`… from the `lesson.md` templates.
-4. Add the course to `README.md`, `README.es.md`, `docs/en/README.md` and `docs/es/README.md`.
-5. Add an entry to [CHANGELOG.md](CHANGELOG.md).
+1. Pick slugs in English, lowercase with hyphens, for the course and each chapter.
+2. Create the bilingual skeleton:
+
+   ```bash
+   node .claude/skills/add-course/scripts/scaffold-course.js my-course first-topic second-topic
+   ```
+
+3. Replace every `{{TODO: ...}}` marker, following [the writing style](.claude/skills/add-course/references/writing-style.md).
+4. Add examples following [the examples guide](.claude/skills/add-course/references/examples-guide.md).
+5. Add the course to `README.md`, `README.es.md`, `docs/en/README.md` and `docs/es/README.md`.
+6. Add an entry to [CHANGELOG.md](CHANGELOG.md).
 
 ## Before opening a pull request
 

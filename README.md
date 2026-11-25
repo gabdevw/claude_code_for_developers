@@ -13,6 +13,7 @@ A bilingual (English/Spanish) guide to working well with [Claude Code](https://c
 | Course | Topics |
 |---|---|
 | [Claude Code in Action](docs/en/claude-code-in-action/README.md) | Long sessions · CLAUDE.md · Skills · Hooks · Scheduled tasks · GitHub Actions and Code Review |
+| [Introduction to Agent Skills](docs/en/introduction-to-agent-skills/README.md) | Creating skills · Configuration and multi-file skills · Skills vs. other features · Sharing (plugins, subagents) · Troubleshooting |
 
 All courses: [docs/en/](docs/en/README.md).
 
@@ -24,8 +25,12 @@ All courses: [docs/en/](docs/en/README.md).
 ├── REVIEW.md                     # Extra guidance for Claude Code Review
 ├── .worktreeinclude              # Ignored files copied into every worktree
 ├── .env.example                  # Secret names without values
+├── .claude-plugin/
+│   └── marketplace.json          # This repository is also a plugin marketplace
 ├── .claude/
 │   ├── settings.json             # Hook configuration
+│   ├── agents/
+│   │   └── docs-reviewer.md      # Subagent that preloads the verify skill
 │   ├── hooks/                    # Hooks written in Node.js (no dependencies)
 │   │   ├── redact-secrets.js         # PreToolUse: redact keys in Bash commands and ask
 │   │   ├── block-secrets-in-prompt.js# UserPromptSubmit: stop secrets before Claude reads them
@@ -35,7 +40,9 @@ All courses: [docs/en/](docs/en/README.md).
 │   │   └── lib/                      # Shared code (secret patterns, input reader)
 │   └── skills/
 │       ├── verify/               # /verify — SKILL.md + reference.md + scripts/check.sh
-│       └── add-course/           # /add-course — add a new course in both languages
+│       └── add-course/           # Adds a course: SKILL.md + references/ + scripts/ + assets/
+├── plugins/
+│   └── agent-skills-starter/     # Plugin with reusable skills + publishing steps
 ├── .github/
 │   ├── workflows/
 │   │   ├── checks.yml            # Runs the /verify checks on every pull request
@@ -46,7 +53,7 @@ All courses: [docs/en/](docs/en/README.md).
 │   ├── en/<course>/              # English notes
 │   └── es/<course>/              # Spanish notes (same file names)
 ├── templates/
-│   ├── en/                       # Copy-ready CLAUDE.md, SKILL.md and page templates
+│   ├── en/                       # Copy-ready CLAUDE.md, SKILL.md and subagent templates
 │   └── es/
 └── scripts/                      # Checks used by hooks, the /verify skill and CI
 ```
@@ -65,8 +72,9 @@ claude
 Inside Claude Code, try:
 
 - `/verify` — runs every check of the repository.
-- `/add-course <course name>` — adds a new course in both languages.
-- `/hooks` — shows the hooks that are active.
+- "Add this course to the project" (with your notes file) — the `add-course` skill turns it into bilingual docs with examples.
+- `/hooks` — shows the hooks that are active. `/skills` — shows the skills.
+- `claude --plugin-dir plugins/agent-skills-starter` — tries the plugin ([steps](plugins/agent-skills-starter/README.md)).
 
 You can also run the checks without Claude:
 
@@ -76,10 +84,11 @@ bash .claude/skills/verify/scripts/check.sh
 
 ## Use it as a base for your own project
 
-1. Copy `.claude/` (hooks, skills and settings), `.worktreeinclude`, `.env.example` and the `.gitignore` rules.
-2. Start your `CLAUDE.md` from [templates/en/CLAUDE.md](templates/en/CLAUDE.md), or run `/init`.
-3. Keep only the hooks you need. The secret hooks are useful everywhere; the translation hooks are specific to this repository.
-4. Change `scripts/` and `check.sh` so `/verify` runs **your** tests and linter.
+1. Copy `.claude/` (hooks, skills, agents and settings), `.worktreeinclude`, `.env.example` and the `.gitignore` rules.
+2. Start your `CLAUDE.md` from [templates/en/CLAUDE.md](templates/en/CLAUDE.md), or run `/init`. Templates for [skills](templates/en/SKILL.md) and [subagents](templates/en/agent.md) are there too.
+3. Install the [agent-skills-starter plugin](plugins/agent-skills-starter/README.md) for reusable skills.
+4. Keep only the hooks you need. The secret hooks are useful everywhere; the translation hooks are specific to this repository.
+5. Change `scripts/` and `check.sh` so `/verify` runs **your** tests and linter.
 
 > Hooks run with your user's permissions. Read every hook before you use it.
 

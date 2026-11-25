@@ -92,6 +92,8 @@ Ejemplos en este repositorio:
 - [.claude/skills/add-course/](../../../.claude/skills/add-course/SKILL.md): agrega un curso nuevo en ambos idiomas (`/add-course <nombre>`).
 - Plantilla: [templates/es/SKILL.md](../../../templates/es/SKILL.md).
 
+> **Para profundizar:** el curso [Introducción a las Agent Skills](../introduction-to-agent-skills/README.md) cubre las skills en detalle: configuración, subagentes, plugins y solución de problemas.
+
 ## Resumen
 
 - [ ] Una skill es una carpeta con un `SKILL.md`: un nombre, una descripción que la activa y el procedimiento.
